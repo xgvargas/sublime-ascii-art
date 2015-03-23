@@ -2,7 +2,7 @@
 Sublime ASCII-Art generator
 ***************************
 
-Example:
+Converts a line os text to its Ascii Art form.
 
 .. sourcecode:: python
 
@@ -22,8 +22,11 @@ Put cursor on first line, then ``Ctrl-Shift-P`` search for ASCII-Art and hit ``E
 	# | (__| | (_| \__ \__ \    | |  __/\__ \ |_| |____| | (_| \__ \__ \
 	#  \___|_|\__,_|___/___/    |_|\___||___/\__|\_____|_|\__,_|___/___/
 
-
 	class TestClass(object):
 		pass
 
 Kind of usefull to separate blocks in a big file.... I guess....
+
+.. warning:: This plugin depends on internet to remotelly generates the AScii-Art
+
+.. note:: Thanks to `Ascii Generator <http://www.network-science.de/ascii/>`_

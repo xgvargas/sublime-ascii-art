@@ -27,6 +27,6 @@ Put cursor on first line, then ``Ctrl-Shift-P`` search for ASCII-Art and hit ``E
 
 Kind of usefull to separate blocks in a big file.... I guess....
 
-.. warning:: This plugin depends on internet to remotelly generates the AScii-Art
+.. warning:: This plugin depends on internet to remotelly generate the Ascii-Art
 
 .. note:: Thanks to `Ascii Generator <http://www.network-science.de/ascii/>`_

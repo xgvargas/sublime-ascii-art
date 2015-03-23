@@ -24,21 +24,24 @@ def getArt(text):
         if m:
             return HTMLParser.HTMLParser().unescape(m.group(1))
     except:
-        self.view.set_status('ascii', 'Ascii-Art generator fails!')
+        pass
 
-    return text
+    return False
 
 class AsciiArtCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         for region in self.view.sel():
             if region.empty(): #sem texto selecionado...
                 line = self.view.line(region)
-                line_contents = self.view.substr(line)
-                if line_contents:
-                    new = getArt(line_contents)
-                    self.view.replace(edit, line, new)
-                    self.view.sel().add(sublime.Region(line.begin(), line.begin()+len(new)))
+                line_content = self.view.substr(line)
+                art = getArt(line_content)
+                if art:
+                    self.view.replace(edit, line, art)
+                    self.view.sel().add(sublime.Region(line.begin(), line.begin()+len(art)))
                     self.view.run_command('toggle_comment')
+                    # self.view.sel().clear()
+                else:
+                    self.view.set_status('ascii', 'Ascii-Art generator failed!')
             else: #texto selecionado...
                 pass
 

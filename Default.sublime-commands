@@ -1,0 +1,6 @@
+[
+    {
+        "caption": "Convert line to an Ascii-Art comment",
+        "command": "ascii_art"
+    }
+]

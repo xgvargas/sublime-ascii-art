@@ -1,5 +1,5 @@
 ***************************
-Sublime ASCII-Art generator
+Sublime ASCII-Art Generator
 ***************************
 
 **Sublime 2 Plugin** to convert a line os text to its Ascii Art form.

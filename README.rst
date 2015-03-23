@@ -2,7 +2,7 @@
 Sublime ASCII-Art generator
 ***************************
 
-Converts a line os text to its Ascii Art form.
+**Sublime 2 Plugin** to convert a line os text to its Ascii Art form.
 
 .. sourcecode:: python
 

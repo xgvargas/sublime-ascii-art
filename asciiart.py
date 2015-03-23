@@ -2,7 +2,7 @@
 
 """
 Author: Gustavo Vargas <xgvargas@gmail.com>
-Repositorie and issues: https://github.com/xgvargas/sublime-ascii-art
+Repository and issues: https://github.com/xgvargas/sublime-ascii-art
 
 Font BIG
            _____  _____ _____ _____             _____ _______
@@ -32,32 +32,7 @@ Font SMALL
 """
 
 import sublime, sublime_plugin
-import urllib, urllib2
-import re
-import HTMLParser
-
-
-def getArt(text):
-    url = 'http://www.network-science.de/ascii/ascii.php'
-    data = urllib.urlencode({
-                            'TEXT': text.strip(' \t\n\r'),
-                            'FONT': 'big',  #also good: doom and small
-                            'RICH': 'no',
-                            'FORM': 'left',
-                            'STRE': 'no',
-                            'WIDT': 80
-                            })
-    try:
-        request = urllib2.Request(url+'?'+data, headers={})
-        http_file = urllib2.urlopen(request, timeout=15)
-        full = http_file.read()
-        m = re.search(r'(?is)<tr><td><pre>(.+?)</pre>', full)
-        if m:
-            return HTMLParser.HTMLParser().unescape(m.group(1))
-    except:
-        pass
-
-    return False
+from pyfiglet import Figlet
 
 class AsciiArtCommand(sublime_plugin.TextCommand):
     def run(self, edit):
@@ -65,7 +40,8 @@ class AsciiArtCommand(sublime_plugin.TextCommand):
             if region.empty(): #sem texto selecionado...
                 line = self.view.line(region)
                 line_content = self.view.substr(line)
-                art = getArt(line_content)
+                fig = Figlet(font='doom')
+                art = fig.renderText(line_content.strip(' \t\n\r'))
                 if art:
                     self.view.replace(edit, line, art)
                     self.view.sel().add(sublime.Region(line.begin(), line.begin()+len(art)))
@@ -76,4 +52,3 @@ class AsciiArtCommand(sublime_plugin.TextCommand):
                     self.view.set_status('ascii', 'Ascii-Art generator failed!')
             else: #texto selecionado...
                 pass
-
